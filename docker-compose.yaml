@@ -1,0 +1,12 @@
+---  # Main
+version: '3'
+services:
+
+  src:
+    build: ./src
+    container_name: neural-nets
+    volumes:
+      - ./src:/src
+    command: tail -f /dev/null
+
+...
