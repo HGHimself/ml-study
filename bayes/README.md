@@ -30,5 +30,5 @@ let d be the event "pick a defective component"
 
 Bayes Formula states teh following:
 
-P(B_j | D) = P(D | B_j) * P(D) / P(B_j)
+`P(B_j | D) = P(D | B_j) * P(D) / P(B_j)`
 
