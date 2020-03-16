@@ -60,12 +60,12 @@ class Network(object):
         print("Going to do {0} Epochs".format(epochs))
         for j in range(epochs):
             # print("{0}:", j)
-            print("Shuffling")
+            # print("Shuffling")
             random.shuffle(training_data)
             mini_batches = [
                 training_data[k:k+mini_batch_size]
                 for k in range(0, n, mini_batch_size)]
-            print("Doing batches")
+            # print("Doing batches")
             for mini_batch in mini_batches:
                 self.update_mini_batch(mini_batch, eta)
             if test_data:
@@ -73,6 +73,7 @@ class Network(object):
                 results.append(result)
                 print ("Epoch {0}: {1} / {2}".format(
                     j, result, n_test))
+                print(self.biases)
             else:
                 print ("Epoch {0} complete".format(j))
 
@@ -85,9 +86,9 @@ class Network(object):
         is the learning rate."""
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
-        i = 0
+        
         for x, y in mini_batch:
-            i += 1
+            
             delta_nabla_b, delta_nabla_w = self.backprop(x, y)
             nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
             nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
@@ -96,7 +97,7 @@ class Network(object):
         self.biases = [b-(eta/len(mini_batch))*nb
                        for b, nb in zip(self.biases, nabla_b)]
 
-        print("trained {0} times".format(i))
+        # print("trained {0} times".format(i))
 
     def backprop(self, x, y):
         """Return a tuple ``(nabla_b, nabla_w)`` representing the
