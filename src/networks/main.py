@@ -11,9 +11,9 @@ from matplotlib import pyplot as plt
 
 training_data, test_data = binary_number_loader.load_binary_numbers()
 # print(test_data)
-net = network.Network([16, 10, 4])
+net = network.Network([256, 50, 8])
 #
-results = net.SGD(training_data, 30, 20, 3.0, test_data=test_data)
+results = net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
 
 plt.plot(results)
 plt.savefig('epochs.png')

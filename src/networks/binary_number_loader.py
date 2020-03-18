@@ -6,14 +6,14 @@ def randomNumber( bottom, spread ):
     return bottom + (math.floor(random() * spread * 10)) % spread
 
 def nTo4bit( n ):
-    return np.array([ [int(n&b==b)] for b in [8,4,2,1] ])
+    return np.array([ [int(n&b==b)] for b in [256,64,32,16,8,4,2,1] ])
 
 def vectorized_result(j):
     """Return a 10-dimensional unit vector with a 1.0 in the jth
     position and zeroes elsewhere.  This is used to convert a digit
     (0...9) into a corresponding desired output from the neural
     network."""
-    e = np.zeros((16, 1))
+    e = np.zeros((256, 1))
     e[j] = 1.0
     return e
 
@@ -24,7 +24,7 @@ def load_binary_numbers():
 
 
     for i in range(50000):
-        number = randomNumber(0, 16)
+        number = randomNumber(0, 256)
         training_inputs.append(vectorized_result(number))
         training_results.append(nTo4bit(number))
 
@@ -47,7 +47,7 @@ def load_binary_numbers():
     test_results = []
 
     for i in range(10000):
-        number = randomNumber(0, 16)
+        number = randomNumber(0, 256)
         test_inputs.append(vectorized_result(number))
         test_results.append(number)
 
