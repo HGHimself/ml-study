@@ -8,5 +8,7 @@ services:
     volumes:
       - ./src:/src
     command: tail -f /dev/null
+    ports:
+      - '4000:4000'
 
 ...
