@@ -7,6 +7,7 @@ RUN pip install notebook
 RUN pip install numpy
 RUN pip install matplotlib
 RUN pip install pandas
+RUN pip install scipy scikit-learn
 # RUN jupyter notebook --ip 0.0.0.0 --port 4000 --allow-root
 
 EXPOSE 4000
